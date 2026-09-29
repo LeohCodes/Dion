@@ -1,0 +1,56 @@
+🛠 Configurações e Repositório
+
+[X] Criar um repositório público no GitHub.
+[X] Desenvolver o aplicativo utilizando o Flutter SDK e a linguagem Dart.
+[ ] Garantir que o projeto compila e executa corretamente a partir dos arquivos do repositório.
+[ ] Aplicar o padrão Material Design na construção da interface.
+[ ] Configurar o gerenciamento de estado dos dados utilizando ChangeNotifier.
+
+ Telas Obrigatórias
+
+[ ] Login (RF001):
+    [ ] Adicionar logotipo da aplicação.
+    [ ] Inserir campos de e-mail e senha, e um botão "Entrar".
+    [ ] Inserir links/botões de navegação para "Cadastro de Usuário" e "Esqueceu a senha?".
+    [ ] Validar preenchimento dos campos e formato do e-mail ao clicar em entrar.
+    [ ] Direcionar para a tela principal após a autenticação bem-sucedida.
+
+[ ] Cadastro de Usuário (RF002):
+    [ ] Inserir campos obrigatórios: Nome, E-mail, Telefone, Senha e Confirmação de Senha.
+    [ ] Adicionar botão para confirmar o cadastro.
+    [ ] Validar preenchimento de todos os campos, formato do e-mail e se as senhas coincidem.
+
+[ ] Esqueceu a Senha (RF003):
+    [ ] Inserir campo de e-mail e botão de solicitação de recuperação.
+    [ ] Validar o preenchimento e o formato válido do e-mail antes de enviar.
+
+[ ] Sobre (RF004):
+    [ ] Exibir o objetivo do aplicativo.
+    [ ] Exibir os nomes dos integrantes da equipe.
+    
+[ ] Perfil do Usuário (RF005):
+    [ ] Exibir o e-mail do usuário logado (apenas para visualização, sem edição).
+    [ ] Exibir o Nome do usuário em um campo editável.
+    [ ] Inserir botão para salvar alterações (e opcionalmente um para cancelar).
+    [ ] Validar quantidade mínima de caracteres no novo nome antes de salvar.
+    [ ] Atualizar o novo nome nas outras telas do aplicativo após salvar.
+
+🚀 Funcionalidades Específicas do Tema (RF006 e RF007)
+
+[ ] Criar no mínimo 5 funcionalidades específicas para o tema do aplicativo.
+
+[ ] Implementar uma interface gráfica própria para cada uma das 5 funcionalidades.
+
+[ ] Separar cada funcionalidade em um arquivo Dart independente.
+
+[ ] Implementar um widget de ListView ou GridView em pelo menos uma dessas telas específicas para exibir dados (podem ser dados estáticos/mockados).
+
+📦 Entregas Finais
+
+[ ] Gravar um vídeo de apresentação com duração máxima de 4 minutos.
+
+[ ] Demonstrar no vídeo o app funcionando e trechos do código-fonte relacionados aos critérios de avaliação.
+
+[ ] Fazer o upload do vídeo (YouTube, GDrive, etc.) e garantir que o link seja público.
+
+[ ] Criar o arquivo de texto para a entrega contendo: Nomes completos, Códigos de matrícula, Link do repositório no GitHub e Link do vídeo.
