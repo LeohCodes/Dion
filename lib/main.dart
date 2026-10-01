@@ -1,7 +1,18 @@
+import 'package:device_preview_plus/device_preview_plus.dart';
+import 'package:dion/view/cadastro_usuario_view.dart';
+import 'package:dion/view/login_view.dart';
+import 'package:dion/view/perfil_view.dart';
+import 'package:dion/view/recuperar_senha_view.dart';
+import 'package:dion/view/sobre_view.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MainApp());
+
+void main(){
+  runApp(
+    DevicePreview(
+      builder: (context) => const MainApp()
+    )
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -9,8 +20,27 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(body: Center(child: Text('Hello World!'))),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Dion',
+
+      //
+      //ROTAS
+      //
+      initialRoute: 'login',
+      routes: {
+        'cadastro_usuario': (context) => const CadastroUsuarioView(),
+        'login': (context) => const LoginView(),
+        'perfil': (context) => const  PerfilView(),
+        'recuperar_senha': (context) => const RecuperarSenhaView(),
+        'sobre': (context) => const SobreView(),
+      },
+
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(
+          builder: (context) => LoginView(),
+        );
+      },
     );
   }
 }
