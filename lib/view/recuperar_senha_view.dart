@@ -10,27 +10,31 @@ class RecuperarSenhaView extends StatefulWidget {
 class _RecuperarSenhaViewState extends State<RecuperarSenhaView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
+return Scaffold(
+      // Fundo em gradiente base
       body: Container(
+        width: double.infinity, // Garante que o fundo ocupe toda a largura
+        height: double.infinity, // Garante que o fundo ocupe toda a altura
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              Color.fromARGB(255, 227, 196, 245), // Tom quase branco do topo
-              Color.fromARGB(255, 248, 246, 249), // Tom quase branco do topo
-              Color.fromARGB(255, 251, 217, 247), // Rosa/Roxo muito claro da base
+              Color.fromARGB(255, 227, 196, 245), 
+              Color.fromARGB(255, 248, 246, 249), // Tom quase branco do meio
+              Color.fromARGB(255, 251, 217, 247), 
             ],
-        ),
+          ),
         ),
         child: SafeArea(
-        child: Padding(
-        padding: EdgeInsets.all(20),
-        child: Column(children: []),
+          // Codigo da tela aqui
+          child: Column(
+            children: [
+              // Substituir esta Column e adicionar o conteúdo da nova tela
+            ],
+          ),
         ),
       ),
-      ),
-      );
+    );
   }
 }

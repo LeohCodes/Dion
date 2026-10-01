@@ -6,7 +6,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // 1. Fundo em gradiente suave
+      // 1. Fundo em gradiente 
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -27,7 +27,7 @@ class LoginView extends StatelessWidget {
               children: [
                 const Spacer(),
 
-                // 2. Logo central
+                // 2. Logo central (esta temorariamente com o icone, mas futuramente será substituido pela logo do app)
                 Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
@@ -54,8 +54,9 @@ class LoginView extends StatelessWidget {
                       size: 80,
                       color: Colors.white,
                     ),
-                  ), // Ícone de mapa como placeholder
-                  //Image.asset('assets/logo_ingresso.png', height: 80),
+                  ), // como placeholder
+                //codigo da imagem do logo VVVV
+                //Image.asset('assets/logo_ingresso.png', height: 80),
                 ),
 
                 const SizedBox(height: 32),
@@ -83,7 +84,7 @@ class LoginView extends StatelessWidget {
 
                 const SizedBox(height: 16),
 
-                // 4. Campos de preenchimento
+                // 4. Campos de preenchimento (TextFields)
                 TextField(
                   decoration: InputDecoration(
                     labelText: 'E-mail',
@@ -102,9 +103,11 @@ class LoginView extends StatelessWidget {
                       )
                   ),
                 ),
+
                 SizedBox(height: 10),
+                //senha
                 TextField(
-                  obscureText: true,
+                  obscureText: true,//Ocultar senha
                   decoration: InputDecoration(
                     labelText: 'Senha',
                     enabledBorder: OutlineInputBorder(
@@ -123,6 +126,7 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 5),
+
                 //recuperar senha
                 Align(
                   alignment: AlignmentGeometry.centerRight,
@@ -135,7 +139,8 @@ class LoginView extends StatelessWidget {
                    child: Text('Esqueceu a senha?')),
                 ),
                 const SizedBox(height: 5),
-                // 5. Card de ações (Botões)
+
+                // 5. Card de ações (Botões entrar e criar conta)
                 Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
@@ -151,6 +156,7 @@ class LoginView extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
+                      
                       // Botão: Criar Conta (Com gradiente)
                       Container(
                         width: double.infinity,
