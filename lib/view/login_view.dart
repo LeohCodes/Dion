@@ -1,7 +1,28 @@
 import 'package:flutter/material.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
+
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+
+  // Controlar e Validar os campos de texto
+  final _formKey = GlobalKey<FormState>();
+
+  //Controlar os campos de texto
+  final _emailController = TextEditingController();
+  final _senhaController = TextEditingController();
+
+  @override
+  //Descarta os controladores quando o widget é removido da árvore de widgets
+  void dispose() {
+    _emailController.dispose();
+    _senhaController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +40,13 @@ class LoginView extends StatelessWidget {
             ],
           ),
         ),
+
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Column(
+            child: Form(
+             key: _formKey,
+             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Spacer(),
@@ -85,7 +109,9 @@ class LoginView extends StatelessWidget {
                 const SizedBox(height: 16),
 
                 // 4. Campos de preenchimento (TextFields)
-                TextField(
+                TextFormField(
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelText: 'E-mail',
                     enabledBorder: OutlineInputBorder(
@@ -100,13 +126,41 @@ class LoginView extends StatelessWidget {
                         color: Color.fromARGB(255, 213, 32, 230),
                         width: 2.0,
                         )
-                      )
+                      ),
+
+                      //Bordas de Erro para o campo de email
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: const Color.fromARGB(255, 255, 0, 81),
+                          width: 1.5,
+                        ),
+                      ),
+                       focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: const Color.fromARGB(255, 255, 0, 81),
+                          width: 2.0,
+                        ),
+                       ),
                   ),
+                  //Validator para o campo de email
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Por favor, digite seu e-mail';
+                    }
+                    //vadilar se o email é valido
+                    final bool emailValido = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
+                    if (!emailValido) {
+                      return 'Por favor, digite um e-mail válido';
+                    }
+                    return null;
+                  },
                 ),
 
                 SizedBox(height: 10),
                 //senha
-                TextField(
+                TextFormField(
                   obscureText: true,//Ocultar senha
                   decoration: InputDecoration(
                     labelText: 'Senha',
@@ -122,8 +176,30 @@ class LoginView extends StatelessWidget {
                         color: Color.fromARGB(255, 213, 32, 230),
                         width: 2.0,
                         )
-                      )
+                      ),
+                      //Bordas de Erro para o campo de senha
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: const Color.fromARGB(255, 255, 0, 81),
+                          width: 1.5,
+                        ),
+                      ),
+                       focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: const Color.fromARGB(255, 255, 0, 81),
+                          width: 2.0,
+                        ),
+                       ),
                   ),
+                  //Validator para s Senha
+                  validator:(value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Por favor, digite sua senha';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 5),
 
@@ -157,7 +233,7 @@ class LoginView extends StatelessWidget {
                   child: Column(
                     children: [
                       
-                      // Botão: Criar Conta (Com gradiente)
+                      // Botão: Entrar (Com gradiente)
                       Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -167,7 +243,19 @@ class LoginView extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            // Validar Campos de texto
+                            if (_formKey.currentState!.validate()) {
+                              String emailDigitado = _emailController.text;
+                              String senhaDigitada = _senhaController.text;
+                            Navigator.pushNamed(
+                             context,'recuperar_senha'
+                    );
+                              //
+                              //Chamar Login_controler Aqui
+                              //
+                            }
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent, // Permite ver o gradiente do Container
                             shadowColor: Colors.transparent,
@@ -196,7 +284,7 @@ class LoginView extends StatelessWidget {
 
                       const SizedBox(height: 16),
 
-                      // Botão: Entrar (Outlined)
+                      // Botão: Criar conta (Outlined)
                       SizedBox(
                         width: double.infinity,
                         child: OutlinedButton(
@@ -240,7 +328,8 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-              ],
+               ],
+             ),
             ),
           ),
         ),
