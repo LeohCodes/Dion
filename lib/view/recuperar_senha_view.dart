@@ -8,6 +8,11 @@ class RecuperarSenhaView extends StatefulWidget {
 }
 
 class _RecuperarSenhaViewState extends State<RecuperarSenhaView> {
+
+  final _formKey = GlobalKey<FormState>();
+
+  final _emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
 return Scaffold(
@@ -39,18 +44,141 @@ return Scaffold(
           ),
         ),
         child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Form(
+             key: _formKey,
+             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Spacer(),
+                // Logo central (esta temorariamente com o icone, mas futuramente será substituido pela logo do app)
+                Container(
+                  padding: const EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white.withValues(alpha: 0.5),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.05),
+                        blurRadius: 20,
+                        spreadRadius: 5,
+                      ),
+                    ],
+                  ),
+                  //
+                  // LOGO AQUI
+                  //
+                  child: ShaderMask(
+                    shaderCallback: (bounds) => const LinearGradient(
+                      colors: [Color(0xFF9C27B0), Color(0xFFE5208C)], // Roxo para Rosa
+                    ).createShader(bounds),
+                    blendMode: BlendMode.srcIn,
+                    child: const Icon(
+                      Icons.wine_bar,
+                      size: 80,
+                      color: Colors.white,
+                    ),
+                  ), // como placeholder
+                //codigo da imagem do logo VVVV
+                //Image.asset('assets/logo_ingresso.png', height: 80),
+                ),
+
+                const SizedBox(height: 32),
+
+                Text.rich(
+                  TextSpan(
+                    text: 'Recuperar Senha',
+                    style: const TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w800,
+                      color: Color(0xFFE5208C), // Texto escuro principal
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+
+                Text.rich(
+                  TextSpan(
+                    text: 'Informe o e-mail para recuperar sua senha',
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w800,
+                      color: Color(0xFF1E1E24), 
+                      // Texto escuro principal
+                    ),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+
+                const SizedBox(height: 16),
+
+                
+                TextFormField(
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: 'E-mail',
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(
+                        color: Color(0xFF9C27B0),
+                      )
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 213, 32, 230),
+                        width: 2.0,
+                        )
+                      ),
+
+                      //Bordas de Erro para o campo de email
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: const Color.fromARGB(255, 255, 0, 81),
+                          width: 1.5,
+                        ),
+                      ),
+                       focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: const Color.fromARGB(255, 255, 0, 81),
+                          width: 2.0,
+                        ),
+                       ),
+                  ),
+                  //Validator para o campo de email
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Informe e-mail para recuperar a senha';
+                    }
+                    //vadilar se o email é valido
+                    final bool emailValido = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
+                    if (!emailValido) {
+                      return 'Por favor, digite um e-mail válido';
+                    }
+                    return null;
+                  },
+                ),
+
+                SizedBox(height: 10),
+
+
+
+          
           //
           // Codigo da tela aqui!!!
           //
-          child: Column(
-            children: [
-              const SizedBox(height: 40),
-              const Text("Tela de Recuperar Senha"),
-              // ... continuar aqui
+          
             ],
           ),
         ),
       ),
-    );
+    ),
+        ),
+      );
   }
 }
