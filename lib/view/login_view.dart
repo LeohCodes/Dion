@@ -249,7 +249,7 @@ class _LoginViewState extends State<LoginView> {
                               String emailDigitado = _emailController.text;
                               String senhaDigitada = _senhaController.text;
                             Navigator.pushNamed(
-                             context,'recuperar_senha'
+                             context,'home'
                     );
                               //
                               //Chamar Login_controler Aqui
@@ -288,7 +288,11 @@ class _LoginViewState extends State<LoginView> {
                       SizedBox(
                         width: double.infinity,
                         child: OutlinedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(
+                              context, 'cadastro_usuario'
+                            );
+                          },
                           style: OutlinedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             side: const BorderSide(color: Color(0xFFD6D6D6), width: 1.5),

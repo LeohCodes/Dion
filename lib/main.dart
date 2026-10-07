@@ -4,6 +4,7 @@ import 'package:dion/view/login_view.dart';
 import 'package:dion/view/perfil_view.dart';
 import 'package:dion/view/recuperar_senha_view.dart';
 import 'package:dion/view/sobre_view.dart';
+import 'package:dion/view/home_view.dart';
 import 'package:flutter/material.dart';
 
 
@@ -34,6 +35,7 @@ class MainApp extends StatelessWidget {
         'perfil': (context) => const  PerfilView(),
         'recuperar_senha': (context) => const RecuperarSenhaView(),
         'sobre': (context) => const SobreView(),
+        'home': (context) => const HomeView(),
       },
 
       onUnknownRoute: (settings) {
