@@ -6,9 +6,14 @@ import 'package:dion/view/recuperar_senha_view.dart';
 import 'package:dion/view/sobre_view.dart';
 import 'package:dion/view/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
+import 'controller/login_controller.dart';
+
+final g = GetIt.instance;
 
 void main(){
+  g.registerSingleton<LoginController>(LoginController());
   runApp(
     DevicePreview(
       builder: (context) => const MainApp()

@@ -53,11 +53,10 @@ return Scaffold(
             child: Form(
              key: _formKey,
              child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Spacer(),
 
-                // 2. Logo central (esta temorariamente com o icone, mas futuramente será substituido pela logo do app)
+                //  Logo central (esta temorariamente com o icone, mas futuramente será substituido pela logo do app)
                 Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
@@ -89,6 +88,19 @@ return Scaffold(
                 //Image.asset('assets/logo_ingresso.png', height: 80),
                 ),
               // ... continuar aqui
+               const SizedBox(height: 32),
+
+                Text.rich(
+                  TextSpan(
+                    text: 'Crie sua conta: ',
+                    style: const TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w800,
+                      color: Color(0xFF1E1E24), // Texto escuro principal
+                    ),
+                  ),
+                ),
+
                const SizedBox(height: 16),
 
                 // 4. Campos de preenchimento (TextFields)
@@ -235,7 +247,7 @@ return Scaffold(
 
                 ),
 
-                const SizedBox(height: 5),
+                const SizedBox(height: 20),
 
                 //  Card de ações (Botões entrar e criar conta)
                 Container(
