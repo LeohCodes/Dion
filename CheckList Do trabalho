@@ -16,13 +16,13 @@
     [ ] Direcionar para a tela principal após a autenticação bem-sucedida.
 
 [ ] Cadastro de Usuário (RF002):
-    [ ] Inserir campos obrigatórios: Nome, E-mail, Telefone, Senha e Confirmação de Senha.
-    [ ] Adicionar botão para confirmar o cadastro.
-    [ ] Validar preenchimento de todos os campos, formato do e-mail e se as senhas coincidem.
+    [X] Inserir campos obrigatórios: Nome, E-mail, Telefone, Senha e Confirmação de Senha.
+    [X] Adicionar botão para confirmar o cadastro.
+    [X] Validar preenchimento de todos os campos, formato do e-mail e se as senhas coincidem.
 
 [ ] Esqueceu a Senha (RF003):
-    [ ] Inserir campo de e-mail e botão de solicitação de recuperação.
-    [ ] Validar o preenchimento e o formato válido do e-mail antes de enviar.
+    [X] Inserir campo de e-mail e botão de solicitação de recuperação.
+    [X] Validar o preenchimento e o formato válido do e-mail antes de enviar.
 
 [ ] Sobre (RF004):
     [ ] Exibir o objetivo do aplicativo.
