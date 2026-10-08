@@ -1,3 +1,4 @@
+import 'package:dion/controller/recuperar_senha_controller.dart';
 import 'package:flutter/material.dart';
 
 class RecuperarSenhaView extends StatefulWidget {
@@ -8,10 +9,12 @@ class RecuperarSenhaView extends StatefulWidget {
 }
 
 class _RecuperarSenhaViewState extends State<RecuperarSenhaView> {
-
+  
   final _formKey = GlobalKey<FormState>();
 
   final _emailController = TextEditingController();
+
+  final RecuperarSenhaController _controller = RecuperarSenhaController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +53,7 @@ return Scaffold(
              key: _formKey,
              child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Spacer(),
+              children: [                
                 // Logo central (esta temorariamente com o icone, mas futuramente será substituido pela logo do app)
                 Container(
                   padding: const EdgeInsets.all(24),
@@ -166,19 +168,93 @@ return Scaffold(
 
                 SizedBox(height: 10),
 
+                Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [Color(0xFF9C27B0), Color(0xFFE5208C)], // Roxo para Rosa
+                          ),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // Validar Campos de texto
+                            if (_formKey.currentState!.validate()) {
+                              String emailDigitado = _emailController.text;
 
+                              //Chamar o controller quando tivermos API
+                              // bool sucesso = await _controller.recuperarSenha(emailDigitado,);
+                              //e um if para colocar o popup se o email for enviado
 
-          
-          //
-          // Codigo da tela aqui!!!
-          //
-          
-            ],
+                              showDialog(
+                                context: context, 
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text(
+                                      'Link Enviado!',
+                                      textAlign: TextAlign.center,
+                                    ),
+
+                                    content: Text (
+                                      'Enviamos um link para recuperar sua senha para o e-mail: \n\n$emailDigitado',
+                                      textAlign: TextAlign.center,
+                                    ),
+
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pushNamedAndRemoveUntil(
+                                            context, 
+                                            'login',
+                                            (route) => false);
+                                        },
+                                        child: const Text(
+                                          'Voltar ao login',
+                                          style: TextStyle(
+                                            color: Color(0xFFE5208C),
+                                            fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  );
+                                }
+                              );                             
+                          
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent, // Permite ver o gradiente do Container
+                            shadowColor: Colors.transparent,
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text(
+                                'Recuperar',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(width: 8),                          
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 50),                                  
+                    ],
+                  ),
+                ),
           ),
         ),
       ),
-    ),
-        ),
-      );
+    );     
   }
 }
