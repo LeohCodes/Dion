@@ -182,10 +182,13 @@ class _LoginViewState extends State<LoginView> {
                     decoration: InputDecoration(
                       labelText: 'Senha',
                     //Visualizar ou ocultar senha ()
-                      suffix: IconButton(
-                        icon: ctrl.visibilidade
-                            ? Icon(Icons.visibility)
-                            : Icon(Icons.visibility_off),
+                      suffixIcon: IconButton(
+                        splashRadius: 20,
+                        icon: Icon(
+                            ctrl.visibilidade ? Icons.visibility : Icons.visibility_off,
+                            size: 20, // 3. Diminui o tamanho do desenho do ícone (o padrão é 24)
+                            color: Colors.grey, // (Opcional) Deixar cinza para ficar mais suave
+                                   ),
                         onPressed: () {
                           ctrl.alterarVisibilitade();
                         },

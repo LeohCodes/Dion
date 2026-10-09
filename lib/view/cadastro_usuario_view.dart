@@ -103,7 +103,48 @@ return Scaffold(
 
                const SizedBox(height: 16),
 
-                // 4. Campos de preenchimento (TextFields)
+                // Campos de preenchimento (TextFields)
+
+                //Nome de Usuario
+                TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Nome de Usuário',
+                    prefix: const Text('@'),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                        color: Color(0xFF9C27B0)
+                      )
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 213, 32, 230),
+                        width: 2.0,
+                        )
+                      ),
+                      //Bordas de Erro para o campo de senha
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: const Color.fromARGB(255, 255, 0, 81),
+                          width: 1.5,
+                        ),
+                      ),
+                       focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: const Color.fromARGB(255, 255, 0, 81),
+                          width: 2.0,
+                        ),
+                       ),
+                  ),
+                ),
+
+                SizedBox(height: 10),
+
+                //Campo do Email
+
                 TextFormField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
@@ -153,7 +194,7 @@ return Scaffold(
                   },
                 ),
                 SizedBox(height: 10),
-                //senha
+                //Senha
                 TextFormField(
                   obscureText: true,//Ocultar senha
                   decoration: InputDecoration(
@@ -189,61 +230,44 @@ return Scaffold(
                   ),
                   //Validator para s Senha
                   validator:(value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Por favor, digite sua senha';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 10),
+                    // 1. Verifica se está vazia
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, digite uma senha.';
+                      }
 
-                //Confirmar senha
-                TextFormField(
-                  obscureText: true,//Ocultar senha
-                  decoration: InputDecoration(
-                    labelText: 'Confirmar Senha',
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(
-                        color: Color(0xFF9C27B0)
-                      )
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(
-                        color: Color.fromARGB(255, 213, 32, 230),
-                        width: 2.0,
-                        )
-                      ),
-                      //Bordas de Erro para o campo de senha
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(
-                          color: const Color.fromARGB(255, 255, 0, 81),
-                          width: 1.5,
-                        ),
-                      ),
-                       focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(
-                          color: const Color.fromARGB(255, 255, 0, 81),
-                          width: 2.0,
-                        ),
-                       ),
-                  ),
-                  //Validator para s Senha
-                  validator:(value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Por favor, digite sua senha';
-                    }
-                    return null;
-                    //
-                    //verificare se as senhas são iguais
-                    //
-                    if (value != _senhaController.text) {
-                      return 'As senhas não coincidem';
-                    }
-                  },
+                      // 2. Verifica o tamanho mínimo (Altamente recomendado por segurança)
+                      if (value.length < 8) {
+                        return 'A senha deve ter pelo menos 8 caracteres.';
+                      }
+
+                      // 3. Verifica se tem pelo menos uma letra MAIÚSCULA
+                      // O [A-Z] procura qualquer letra de A a Z maiúscula.
+                      if (!RegExp(r'[A-Z]').hasMatch(value)) {
+                        return 'Adicione pelo menos uma letra maiúscula.';
+                      }
+
+                      // 4. Verifica se tem pelo menos uma letra minúscula
+                      // O [a-z] procura qualquer letra minúscula.
+                      if (!RegExp(r'[a-z]').hasMatch(value)) {
+                        return 'Adicione pelo menos uma letra minúscula.';
+                      }
+
+                      // 5. Verifica se tem pelo menos um número (Opcional, mas recomendado)
+                      // O [0-9] procura qualquer dígito.
+                      if (!RegExp(r'[0-9]').hasMatch(value)) {
+                        return 'A senha precisa de pelo menos um número.';
+                      }
+
+                      // 6. Verifica caractere especial
+                      // Essa lista [!@#\$&*~_] define quais símbolos são aceitos. 
+                      // O \ antes do $ é obrigatório pois o $ é um comando no Dart.
+                      if (!RegExp(r'[!@#\$&*~_.-]').hasMatch(value)) {
+                        return 'Adicione um caractere especial (ex: @, #, !).';
+                      }
+
+                      // Se passou por todos os "ifs" acima, a senha é perfeita!
+                      return null;
+                    },
 
                 ),
 
