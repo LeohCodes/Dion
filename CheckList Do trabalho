@@ -10,10 +10,10 @@
 
 [ ] Login (RF001):
     [ ] Adicionar logotipo da aplicação.
-    [ ] Inserir campos de e-mail e senha, e um botão "Entrar".
-    [ ] Inserir links/botões de navegação para "Cadastro de Usuário" e "Esqueceu a senha?".
-    [ ] Validar preenchimento dos campos e formato do e-mail ao clicar em entrar.
-    [ ] Direcionar para a tela principal após a autenticação bem-sucedida.
+    [X] Inserir campos de e-mail e senha, e um botão "Entrar".
+    [X] Inserir links/botões de navegação para "Cadastro de Usuário" e "Esqueceu a senha?".
+    [X] Validar preenchimento dos campos e formato do e-mail ao clicar em entrar.
+    [X] Direcionar para a tela principal após a autenticação bem-sucedida.
 
 [ ] Cadastro de Usuário (RF002):
     [X] Inserir campos obrigatórios: Nome, E-mail, Telefone, Senha e Confirmação de Senha.

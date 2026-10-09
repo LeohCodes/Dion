@@ -7,7 +7,7 @@ class RecuperarSenhaController extends ChangeNotifier {
     // Por enquanto não temos API.
     // Futuramente a chamada para o backend ficará aqui.
 
-    print('Solicitação de recuperação para: $email');
+    // print('Solicitação de recuperação para: $email');
 
     // Simulando que deu certo
     return true;

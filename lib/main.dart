@@ -1,5 +1,6 @@
 import 'package:device_preview_plus/device_preview_plus.dart';
 import 'package:dion/view/cadastro_usuario_view.dart';
+import 'package:dion/view/configuracoes_view.dart';
 import 'package:dion/view/login_view.dart';
 import 'package:dion/view/perfil_view.dart';
 import 'package:dion/view/recuperar_senha_view.dart';
@@ -39,6 +40,7 @@ class MainApp extends StatelessWidget {
         'login': (context) => const LoginView(),
         'perfil': (context) => const  PerfilView(),
         'recuperar_senha': (context) => const RecuperarSenhaView(),
+        'configuracoes': (context) => const ConfiguracoesView(),
         'sobre': (context) => const SobreView(),
         'home': (context) => const HomeView(),
       },
