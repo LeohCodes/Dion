@@ -189,6 +189,7 @@ class _LoginViewState extends State<LoginView> {
                             size: 20, // 3. Diminui o tamanho do desenho do ícone (o padrão é 24)
                             color: Colors.grey, // (Opcional) Deixar cinza para ficar mais suave
                                    ),
+                                  
                         onPressed: () {
                           ctrl.alterarVisibilitade();
                         },
