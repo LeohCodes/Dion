@@ -130,6 +130,7 @@ class _LoginViewState extends State<LoginView> {
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
+                      hintText: 'Digite seu e-mail',
                       labelText: 'E-mail',
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
