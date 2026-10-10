@@ -40,13 +40,13 @@
 [ ] Criar no mínimo 5 funcionalidades específicas para o tema do aplicativo.
     [X] Tela de Home
     [X] tela do evento com informações
-    [] Tela Criar evento, Para o Organizador
+    [X] Tela Criar evento, Para o Organizador
     [] Tela Configuração
     [] Tela Endereço
 
 [ ] Implementar uma interface gráfica própria para cada uma das 5 funcionalidades.
 
-[ ] Separar cada funcionalidade em um arquivo Dart independente.
+[X] Separar cada funcionalidade em um arquivo Dart independente.
 
 [X] Implementar um widget de ListView ou GridView em pelo menos uma dessas telas específicas para exibir dados (podem ser dados estáticos/mockados).
 
