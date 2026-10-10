@@ -169,7 +169,7 @@ class _EventoInfoViewState extends State<EventoInfoView> {
                     ),
                     
                     // Ajuste de espaçamento compensando o Transform das tags
-                    const SizedBox(height: -20), //estava -20 mas dava erro
+                    const SizedBox(height: 0), //estava -20 mas dava erro
 
                     // --- TÍTULO E ORGANIZADOR ---
 
