@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dion/controller/home_controller.dart'; 
 // 1. IMPORTANTE: Importe a tela de destino (ajuste o caminho se necessário)
 import 'package:dion/view/evento_info_view.dart'; 
+import 'package:dion/view/perfil_view.dart'; 
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -35,8 +36,16 @@ class _HomeViewState extends State<HomeView> {
         onTap: (index) {
           setState(() {
             _selectedIndex = index;
-            // [SUBSTITUIR] adicionar a navegação para outras telas
           });
+
+          // Lógica de navegação
+          if (index == 3) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const PerfilView()),
+            );
+          }
+          // Futuramente, você pode adicionar: if (index == 1) { navega para o mapa } etc.
         },
         type: BottomNavigationBarType.fixed,
         selectedItemColor: const Color(0xFF9C27B0), // Roxo do Dion

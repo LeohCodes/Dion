@@ -6,6 +6,8 @@ import 'package:dion/view/perfil_view.dart';
 import 'package:dion/view/recuperar_senha_view.dart';
 import 'package:dion/view/sobre_view.dart';
 import 'package:dion/view/home_view.dart';
+import 'package:dion/view/criar_evento_view.dart';
+import 'package:dion/view/evento_info_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -43,6 +45,8 @@ class MainApp extends StatelessWidget {
         'configuracoes': (context) => const ConfiguracoesView(),
         'sobre': (context) => const SobreView(),
         'home': (context) => const HomeView(),
+        'criar_evento': (context) => const CriarEventoView(), 
+        'evento_info': (context) => const EventoInfoView(),
       },
 
       onUnknownRoute: (settings) {

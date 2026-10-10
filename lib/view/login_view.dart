@@ -352,7 +352,9 @@ class _LoginViewState extends State<LoginView> {
 
                   // 6. Rodapé
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'criar_evento'); // Futuramente editar
+                    },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: const [
