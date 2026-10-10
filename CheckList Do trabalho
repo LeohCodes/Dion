@@ -15,12 +15,12 @@
     [X] Validar preenchimento dos campos e formato do e-mail ao clicar em entrar.
     [X] Direcionar para a tela principal após a autenticação bem-sucedida.
 
-[ ] Cadastro de Usuário (RF002):
+[X] Cadastro de Usuário (RF002):
     [X] Inserir campos obrigatórios: Nome, E-mail, Telefone, Senha e Confirmação de Senha.
     [X] Adicionar botão para confirmar o cadastro.
     [X] Validar preenchimento de todos os campos, formato do e-mail e se as senhas coincidem.
 
-[ ] Esqueceu a Senha (RF003):
+[X] Esqueceu a Senha (RF003):
     [X] Inserir campo de e-mail e botão de solicitação de recuperação.
     [X] Validar o preenchimento e o formato válido do e-mail antes de enviar.
 
@@ -38,12 +38,17 @@
 🚀 Funcionalidades Específicas do Tema (RF006 e RF007)
 
 [ ] Criar no mínimo 5 funcionalidades específicas para o tema do aplicativo.
+    [] Tela de Home
+    [] tela do evento com informações
+    [] Tela Criar evento, Para o Organizador
+    [] Tela Configuração
+    [] Tela Carteira de ingressos
 
 [ ] Implementar uma interface gráfica própria para cada uma das 5 funcionalidades.
 
 [ ] Separar cada funcionalidade em um arquivo Dart independente.
 
-[ ] Implementar um widget de ListView ou GridView em pelo menos uma dessas telas específicas para exibir dados (podem ser dados estáticos/mockados).
+[X] Implementar um widget de ListView ou GridView em pelo menos uma dessas telas específicas para exibir dados (podem ser dados estáticos/mockados).
 
 📦 Entregas Finais
 

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:dion/controller/home_controller.dart'; 
+// 1. IMPORTANTE: Importe a tela de destino (ajuste o caminho se necessário)
+import 'package:dion/view/evento_info_view.dart'; 
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -8,11 +11,19 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  // Instanciamos o Controller aqui
+  final HomeController _controller = HomeController();
+  
   // Controle de qual aba está selecionada na Barra de Navegação
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    // Buscamos as listas do Controller para renderizar na tela
+    final featuredEvents = _controller.getFeaturedEvents();
+    final upcomingEvents = _controller.getUpcomingEvents();
+    final favoriteEvents = _controller.getFavoriteEvents();
+
     return Scaffold(
       backgroundColor: Colors.white,
       
@@ -40,12 +51,8 @@ class _HomeViewState extends State<HomeView> {
         ],
       ),
       
-      // =========================================================
-
       body: SafeArea(
-
         // LISTVIEW PRINCIPAL DA TELA
-
         child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 24.0),
           children: [
@@ -71,23 +78,37 @@ class _HomeViewState extends State<HomeView> {
             const SizedBox(height: 32),
 
             // 2. SEÇÃO: EVENTOS EM DESTAQUE (Scroll Horizontal)
-
             const _SectionTitle(title: 'Eventos em Destaque'),
             const SizedBox(height: 16),
             SizedBox(
-              height: 320, // Altura fixa para o ListView horizontal funcionar
+              height: 320, 
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                itemCount: 3, // [SUBSTITUIR] Pelo tamanho da sua lista do banco
+                itemCount: featuredEvents.length, // Dinâmico com base no Controller
                 itemBuilder: (context, index) {
-                  return const _FeaturedEventCard(
-                    title: 'João Rock 2026',
-                    date: 'Hoje, 13:10',
-                    price: 'A partir de R\$ 200',
-                    badgeText: 'Em alta',
-                    tags: ['Festival', 'Rock'],
-                    // [SUBSTITUIR] Passar o caminho da imagem aqui: imagePath: 'assets/joao_rock.png'
+                  final event = featuredEvents[index];
+                  
+                  // ENVOLVEMOS O CARD COM GESTURE DETECTOR
+                  return GestureDetector(
+                    onTap: () {
+                      // NAVEGAÇÃO PARA A TELA DE DETALHES
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const EventoInfoView(),
+                        ),
+                      );
+                    },
+                    child: _FeaturedEventCard(
+                      title: event.title,
+                      date: event.date,
+                      price: event.price,
+                      badgeText: event.badgeText,
+                      tags: event.tags,
+                      isFavoriteCard: event.isFavorite,
+                      imagePath: event.imagePath,
+                    ),
                   );
                 },
               ),
@@ -97,19 +118,28 @@ class _HomeViewState extends State<HomeView> {
             // 3. SEÇÃO: EVENTOS PRÓXIMOS (Lista Vertical)
             const _SectionTitle(title: 'Eventos Próximos', actionText: 'Ver todos'),
             const SizedBox(height: 16),
-            // Usamos shrinkWrap: true e NeverScrollableScrollPhysics para que 
-            // essa lista acompanhe o scroll do ListView principal da tela
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: 2, // [SUBSTITUIR] Pelo tamanho da lista
+              itemCount: upcomingEvents.length, // Dinâmico com base no Controller
               itemBuilder: (context, index) {
-                return const _UpcomingEventCard(
-                  title: 'Vivo Música em Ribeirão Preto',
-                  dateInfo: 'AMANHÃ',
-                  location: 'Parque Dr. Luis Carlos Raya',
-                  tags: ['Ao ar livre', 'Pet-friendly'],
-                  // [SUBSTITUIR] imagePath: 'assets/vivo_musica.png'
+                final event = upcomingEvents[index];
+
+                // NAVEGAÇÃO
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const EventoInfoView()),
+                    );
+                  },
+                  child: _UpcomingEventCard(
+                    title: event.title,
+                    dateInfo: event.date,
+                    location: event.location,
+                    tags: event.tags,
+                    imagePath: event.imagePath,
+                  ),
                 );
               },
             ),
@@ -119,20 +149,31 @@ class _HomeViewState extends State<HomeView> {
             const _SectionTitle(title: 'Suas atrações favoritas', actionText: 'Ver todas'),
             const SizedBox(height: 16),
             SizedBox(
-              height: 290,
+              height: 320,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                itemCount: 2,
+                itemCount: favoriteEvents.length, // Dinâmico com base no Controller
                 itemBuilder: (context, index) {
-                  return const _FeaturedEventCard(
-                    title: 'Iron Maiden',
-                    date: 'Turnê Mundial',
-                    price: 'A partir de R\$ 125',
-                    badgeText: 'Favorito',
-                    isFavoriteCard: true,
-                    tags: ['Show', 'Rock'],
-                    // [SUBSTITUIR] imagePath: 'assets/iron_maiden.png'
+                  final event = favoriteEvents[index];
+
+                  // NAVEGAÇÃO
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const EventoInfoView()),
+                      );
+                    },
+                    child: _FeaturedEventCard(
+                      title: event.title,
+                      date: event.date,
+                      price: event.price,
+                      badgeText: event.badgeText,
+                      isFavoriteCard: event.isFavorite,
+                      tags: event.tags,
+                      imagePath: event.imagePath,
+                    ),
                   );
                 },
               ),
@@ -145,7 +186,7 @@ class _HomeViewState extends State<HomeView> {
 }
 
 // ============================================================================
-// WIDGETS AUXILIARES (MOVER CADA UM PARA UM ARQUIVO SEPARADO DEPOIS)!
+// WIDGETS AUXILIARES
 // ============================================================================
 
 /// Título das seções (Ex: "Eventos em Destaque")
@@ -190,6 +231,7 @@ class _FeaturedEventCard extends StatelessWidget {
   final String badgeText;
   final List<String> tags;
   final bool isFavoriteCard;
+  final String imagePath; // Novo campo para receber do Controller
 
   const _FeaturedEventCard({
     required this.title,
@@ -198,6 +240,7 @@ class _FeaturedEventCard extends StatelessWidget {
     required this.badgeText,
     required this.tags,
     this.isFavoriteCard = false,
+    required this.imagePath,
   });
 
   @override
@@ -210,7 +253,7 @@ class _FeaturedEventCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withOpacity(0.05), // Atenção: com o Flutter mais novo use withOpacity no lugar de withValues(alpha: ...) se der erro
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -225,59 +268,59 @@ class _FeaturedEventCard extends StatelessWidget {
               ClipRRect(
                 borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
                 child: Container(
-                  height: 120, // Reduzi levemente a imagem para dar mais espaço ao texto
+                  height: 120, 
                   width: double.infinity,
                   color: Colors.grey[300],
-                  child: const Center(child: Text('Imagem do Evento', style: TextStyle(color: Colors.grey))),
+                  // Se as imagens existirem na sua pasta assets, você pode descomentar a linha abaixo:
+                  // child: Image.asset(imagePath, fit: BoxFit.cover),
+                  child: Center(child: Text(imagePath, style: const TextStyle(color: Colors.grey, fontSize: 10))),
                 ),
               ),
-              Positioned(
-                top: 12,
-                left: 12,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(
-                        isFavoriteCard ? Icons.favorite_border : Icons.local_fire_department,
-                        size: 14,
-                        color: const Color(0xFFE5208C),
-                      ),
-                      const SizedBox(width: 4),
-                      Text(
-                        badgeText,
-                        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                      ),
-                    ],
+              if (badgeText.isNotEmpty) // Só desenha a tag se tiver texto
+                Positioned(
+                  top: 12,
+                  left: 12,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          isFavoriteCard ? Icons.favorite_border : Icons.local_fire_department,
+                          size: 14,
+                          color: const Color(0xFFE5208C),
+                        ),
+                        const SizedBox(width: 4),
+                        Text(
+                          badgeText,
+                          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
             ],
           ),
           
           // Metade inferior: Informações (Tamanho Flexível com Expanded)
           Expanded(
             child: Padding(
-              // Reduzi o padding de 16 para 12 para ganhar espaço extra
               padding: const EdgeInsets.all(12.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                // O spaceBetween empurra a Row do preço pro final do card!
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Bloco Superior (Título, Data e Tags)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         title, 
                         style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                        maxLines: 2, // Garante que o título não passe de 2 linhas
-                        overflow: TextOverflow.ellipsis, // Coloca "..." se for muito grande
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis, 
                       ),
                       const SizedBox(height: 4),
                       Row(
@@ -288,8 +331,7 @@ class _FeaturedEventCard extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      // Tags
-                      Wrap( // Mudei de Row para Wrap, assim se as tags forem grandes elas quebram de linha sem dar erro
+                      Wrap( 
                         spacing: 6,
                         runSpacing: 6,
                         children: tags.map((tag) => _buildTag(tag)).toList(),
@@ -297,7 +339,7 @@ class _FeaturedEventCard extends StatelessWidget {
                     ],
                   ),
                   
-                  // Bloco Inferior (Preço e Botão colados na base)
+                  // Bloco Inferior 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -335,12 +377,14 @@ class _UpcomingEventCard extends StatelessWidget {
   final String dateInfo;
   final String location;
   final List<String> tags;
+  final String imagePath; // Novo campo para receber do Controller
 
   const _UpcomingEventCard({
     required this.title,
     required this.dateInfo,
     required this.location,
     required this.tags,
+    required this.imagePath,
   });
 
   @override
@@ -353,11 +397,12 @@ class _UpcomingEventCard extends StatelessWidget {
           // Imagem Circular à esquerda
           ClipRRect(
             borderRadius: BorderRadius.circular(40),
-            // [SUBSTITUIR] Use Image.asset ou Image.network aqui
             child: Container(
               width: 80,
               height: 80,
-              color: Colors.grey[300], // Placeholder
+              color: Colors.grey[300], 
+              // Descomente quando tiver as imagens:
+              // child: Image.asset(imagePath, fit: BoxFit.cover),
             ),
           ),
           const SizedBox(width: 16),
@@ -389,12 +434,11 @@ class _UpcomingEventCard extends StatelessWidget {
                   style: const TextStyle(color: Colors.grey, fontSize: 12),
                 ),
                 const SizedBox(height: 8),
-                // Tags
                 Wrap(
                   spacing: 6,
                   runSpacing: 6,
                   children: tags.map((tag) {
-                    bool isPink = tag == 'Pet-friendly' || tag == 'Geek'; // Pequena lógica só pra colorir como no protótipo
+                    bool isPink = tag == 'Pet-friendly' || tag == 'Geek'; 
                     return _buildTag(
                       tag,
                       bgColor: isPink ? const Color(0xFFE5208C).withOpacity(0.1) : null,
@@ -411,13 +455,13 @@ class _UpcomingEventCard extends StatelessWidget {
   }
 }
 
-/// Função utilitária para desenhar as tags ("Festival", "Rock", "Pet-friendly")
+/// Função utilitária para desenhar as tags
 Widget _buildTag(String text, {Color? bgColor, Color? textColor}) {
   return Container(
     margin: const EdgeInsets.only(right: 6),
     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
     decoration: BoxDecoration(
-      color: bgColor ?? const Color(0xFFF3E5F5), // Fundo roxo bem clarinho padrão
+      color: bgColor ?? const Color(0xFFF3E5F5), 
       borderRadius: BorderRadius.circular(12),
     ),
     child: Text(
@@ -425,7 +469,7 @@ Widget _buildTag(String text, {Color? bgColor, Color? textColor}) {
       style: TextStyle(
         fontSize: 10,
         fontWeight: FontWeight.bold,
-        color: textColor ?? const Color(0xFF9C27B0), // Texto roxo padrão
+        color: textColor ?? const Color(0xFF9C27B0),
       ),
     ),
   );
