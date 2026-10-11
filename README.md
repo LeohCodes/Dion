@@ -53,12 +53,12 @@ A interface de cadastro foi projetada para viabilizar a entrada de novos usuári
 ### 2. Home (Descoberta de Eventos)
 A tela inicial atua como o principal motor de descoberta exploratória, contendo Scroll View horizontal e vertical dinâmicos divididos entre "Eventos em Destaque", "Eventos Próximos" e "Atrações Favoritas".
 
-![Protótipo - Tela Home](https://github.com/LeohCodes/Dion/tree/main/dion/assets/screenshots/Home.jpg)
+![Protótipo - Tela Home](https://github.com/LeohCodes/Dion/blob/main/assets/screenshots/Home.jpg)
 
 ### 3. Detalhes do Evento (EventoInfoView)
 Página de conversão da plataforma. Estruturada com uma imagem de topo (Header) fixada no fundo, scroll sobreposto de informações, seção de atrações, mapa integrado e uma "Sticky Bottom Bar" fixa para compra de ingressos.
 
-![Protótipo - Detalhes do Evento](https://github.com/LeohCodes/Dion/tree/main/assets/screenshots/EventoInfo.jpg)
+![Protótipo - Detalhes do Evento](https://github.com/LeohCodes/Dion/blob/main/assets/screenshots/EventoInfo.jpg)
 
 ### 4. Perfil do Usuário
 Painel de controle do consumidor e gerenciamento de identidade. O desenvolvimento contou com a lógica condicional de um **"Modo de Edição"**, permitindo que a view alterne organicamente entre a visualização das estatísticas/interesses e o formulário de atualização de dados, sem a necessidade de criar uma nova tela.
