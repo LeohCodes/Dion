@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-
+import 'package:flutter/material.dart'; // Certifique-se de ter um arquivo assets.dart com os caminhos corretos para os assets
 // ==========================================
 // MODELOS DE DADOS
 // ==========================================

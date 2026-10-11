@@ -48,22 +48,22 @@ Abaixo estão algumas telas desenvolvidas no front-end, baseadas na alta fidelid
 ### 1. Criar Perfil (Cadastro de Usuário)
 A interface de cadastro foi projetada para viabilizar a entrada de novos usuários no sistema, diferenciando o público desde o primeiro contato. O grande destaque arquitetônico desta tela é o **seletor dinâmico de perfil** (Toggle Switch). Ao alternar entre "Sou Cliente" e "Sou Organizador", o formulário reage em tempo real, renderizando ou ocultando campos específicos (como a obrigatoriedade de CNPJ e a flag de "Artista Independente" para produtores), garantindo uma coleta de dados precisa e customizada sem precisar recarregar a página.
 
-![Protótipo - Tela de Cadastro](dion/assets/screenshots/CriarConta.jpeg)
+![Protótipo - Tela de Cadastro](dion/assets/screenshots/CriarConta.jpg)
 
 ### 2. Home (Descoberta de Eventos)
 A tela inicial atua como o principal motor de descoberta exploratória, contendo Scroll View horizontal e vertical dinâmicos divididos entre "Eventos em Destaque", "Eventos Próximos" e "Atrações Favoritas".
 
-![Protótipo - Tela Home](dion/assets/screenshots/TelaHome.jpeg)
+![Protótipo - Tela Home](https://github.com/LeohCodes/Dion/tree/main/dion/assets/screenshots/Home.jpg)
 
 ### 3. Detalhes do Evento (EventoInfoView)
 Página de conversão da plataforma. Estruturada com uma imagem de topo (Header) fixada no fundo, scroll sobreposto de informações, seção de atrações, mapa integrado e uma "Sticky Bottom Bar" fixa para compra de ingressos.
 
-![Protótipo - Detalhes do Evento](dion/assets/screenshots/EventoInfo.jpeg)
+![Protótipo - Detalhes do Evento](https://github.com/LeohCodes/Dion/tree/main/assets/screenshots/EventoInfo.jpg)
 
 ### 4. Perfil do Usuário
 Painel de controle do consumidor e gerenciamento de identidade. O desenvolvimento contou com a lógica condicional de um **"Modo de Edição"**, permitindo que a view alterne organicamente entre a visualização das estatísticas/interesses e o formulário de atualização de dados, sem a necessidade de criar uma nova tela.
 
-![Protótipo - Perfil do Usuário](dion/assets/screenshots/Perfil.jpeg)
+![Protótipo - Perfil do Usuário](dion/assets/screenshots/Perfil.jpg)
 
 ---
 

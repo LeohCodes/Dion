@@ -92,7 +92,7 @@ class HomeController {
         badgeText: 'Favorito',
         isFavorite: true,
         tags: ['Show', 'Rock'],
-        imagePath: 'assets/iron_maiden.png',
+        imagePath: 'assets/evento/IronMaiden.jpg',
       ),
        EventModel(
         title: 'Vintage Culture',
