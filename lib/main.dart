@@ -1,8 +1,10 @@
 import 'package:device_preview_plus/device_preview_plus.dart';
 import 'package:dion/view/cadastro_usuario_view.dart';
 import 'package:dion/view/configuracoes_view.dart';
+import 'package:dion/view/enderecos_view.dart';
 import 'package:dion/view/login_view.dart';
 import 'package:dion/view/perfil_view.dart';
+import 'package:dion/view/preferencias_view.dart';
 import 'package:dion/view/recuperar_senha_view.dart';
 import 'package:dion/view/sobre_view.dart';
 import 'package:dion/view/home_view.dart';
@@ -47,6 +49,9 @@ class MainApp extends StatelessWidget {
         'home': (context) => const HomeView(),
         'criar_evento': (context) => const CriarEventoView(), 
         'evento_info': (context) => const EventoInfoView(),
+        'preferencias': (context) => const PreferenciasView(),
+        'enderecos': (context) => const EnderecosView(),
+        
       },
 
       onUnknownRoute: (settings) {

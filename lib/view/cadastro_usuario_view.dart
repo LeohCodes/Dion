@@ -94,10 +94,10 @@ class _CadastroUsuarioViewState extends State<CadastroUsuarioView> {
                           padding: const EdgeInsets.all(24),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.white.withOpacity(0.5),
+                            color: Colors.white.withValues(alpha: 0.5),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.05),
+                                color: Colors.black.withValues(alpha: 0.05),
                                 blurRadius: 20,
                                 spreadRadius: 5,
                               ),
@@ -162,7 +162,7 @@ class _CadastroUsuarioViewState extends State<CadastroUsuarioView> {
                                     color: !_isOrganizador ? Colors.white : Colors.transparent,
                                     borderRadius: BorderRadius.circular(30),
                                     boxShadow: !_isOrganizador
-                                        ? [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 4)]
+                                        ? [BoxShadow(color: Colors.black.withValues(alpha:0.05), blurRadius: 4)]
                                         : [],
                                   ),
                                   alignment: Alignment.center,
@@ -184,7 +184,7 @@ class _CadastroUsuarioViewState extends State<CadastroUsuarioView> {
                                     color: _isOrganizador ? Colors.white : Colors.transparent,
                                     borderRadius: BorderRadius.circular(30),
                                     boxShadow: _isOrganizador
-                                        ? [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 4)]
+                                        ? [BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 4)]
                                         : [],
                                   ),
                                   alignment: Alignment.center,
@@ -352,7 +352,7 @@ class _CadastroUsuarioViewState extends State<CadastroUsuarioView> {
                           borderRadius: BorderRadius.circular(30),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFE5208C).withOpacity(0.3),
+                              color: const Color(0xFFE5208C).withValues(alpha: 0.3),
                               blurRadius: 15,
                               offset: const Offset(0, 5),
                             )

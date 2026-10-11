@@ -137,7 +137,7 @@ class _PerfilViewState extends State<PerfilView> {
               children: [
                 const SizedBox(height: 12),
 
-                // --- Avatar com Borda Gradiente e Badge ---
+                // BORDA GRADIENTE NO AVATAR
                 Center(
                   child: Stack(
                     alignment: Alignment.bottomRight,
@@ -157,7 +157,7 @@ class _PerfilViewState extends State<PerfilView> {
                           backgroundColor: Colors.white,
                           child: CircleAvatar(
                             radius: 50,
-                            backgroundImage: NetworkImage(usuario.imagePath),
+                            backgroundImage: NetworkImage(usuario.imagePath), //Depois isso será mudado, com o usuário podendo enviar imagens ou termos pequenos icones
                           ),
                         ),
                       ),
@@ -178,7 +178,7 @@ class _PerfilViewState extends State<PerfilView> {
                 ),
                 const SizedBox(height: 16),
 
-                // --- Nome e @Username ---
+                // NOME E @USERNAME
                 Text(
                   usuario.nome,
                   style: const TextStyle(
@@ -197,7 +197,7 @@ class _PerfilViewState extends State<PerfilView> {
                 ),
                 const SizedBox(height: 12),
 
-                // --- Badge Premium ---
+                // BADGE PREMIUM
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                   decoration: BoxDecoration(
@@ -222,7 +222,10 @@ class _PerfilViewState extends State<PerfilView> {
                 ),
                 const SizedBox(height: 16),
 
-                // --- Botões (Configurações & Editar Perfil) ---
+                // BOTÕES
+                //CONFIGURACOES (AJUSTES)
+                //EDITAR PERFIL
+                
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: Row(

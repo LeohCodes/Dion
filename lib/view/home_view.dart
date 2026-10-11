@@ -262,7 +262,7 @@ class _FeaturedEventCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05), // Atenção: com o Flutter mais novo use withOpacity no lugar de withValues(alpha: ...) se der erro
+            color: Colors.black.withValues(alpha: 0.05), 
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -363,7 +363,7 @@ class _FeaturedEventCard extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: const Color(0xFF9C27B0).withOpacity(0.1),
+                          color: const Color(0xFF9C27B0).withValues(alpha: 0.1),
                         ),
                         padding: const EdgeInsets.all(6),
                         child: const Icon(Icons.arrow_forward, size: 16, color: Color(0xFF9C27B0)),
@@ -450,7 +450,7 @@ class _UpcomingEventCard extends StatelessWidget {
                     bool isPink = tag == 'Pet-friendly' || tag == 'Geek'; 
                     return _buildTag(
                       tag,
-                      bgColor: isPink ? const Color(0xFFE5208C).withOpacity(0.1) : null,
+                      bgColor: isPink ? const Color(0xFFE5208C).withValues(alpha: 0.1) : null,
                       textColor: isPink ? const Color(0xFFE5208C) : null,
                     );
                   }).toList(),

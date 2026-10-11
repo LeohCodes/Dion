@@ -25,8 +25,8 @@
     [X] Validar o preenchimento e o formato válido do e-mail antes de enviar.
 
 [ ] Sobre (RF004):
-    [ ] Exibir o objetivo do aplicativo.
-    [ ] Exibir os nomes dos integrantes da equipe.
+    [X] Exibir o objetivo do aplicativo.
+    [X] Exibir os nomes dos integrantes da equipe.
     
 [X] Perfil do Usuário (RF005):
     [X] Exibir o e-mail do usuário logado (apenas para visualização, sem edição).
@@ -41,10 +41,10 @@
     [X] Tela de Home
     [X] tela do evento com informações
     [X] Tela Criar evento, Para o Organizador
-    [] Tela Configuração
+    [X] Tela Configuração
     [] Tela Endereço
 
-[ ] Implementar uma interface gráfica própria para cada uma das 5 funcionalidades.
+[X] Implementar uma interface gráfica própria para cada uma das 5 funcionalidades.
 
 [X] Separar cada funcionalidade em um arquivo Dart independente.
 
